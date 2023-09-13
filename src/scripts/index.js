@@ -1,4 +1,5 @@
 import '../styles/main.css'
+import './weatherAPI.js'
 
 // fetch weatherAPI
 // display weatherAPI data
