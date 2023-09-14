@@ -88,7 +88,6 @@ export const display = (() => {
         forecastContainer.innerHTML = '';
         for (let i = 0; i < week.length; i++) {
             // create html elements
-            console.log(week[i])
             const card = document.createElement('div');
             const maxTemp = document.createElement('p');
             const minTemp = document.createElement('p');
