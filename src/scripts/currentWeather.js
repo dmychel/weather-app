@@ -1,9 +1,7 @@
 import { display } from "./dom";
 
 export function currentWeatherInfo(weather) {
-  // get current weather
-  // get current city, state, country
-  // get update
+  let scale = document.getElementById('scale').checked;
   let location = {
     city: weather.location.name,
     state: weather.location.region,
@@ -11,5 +9,10 @@ export function currentWeatherInfo(weather) {
   let currentWeather = weather.current;
   let update = weather.current.last_updated;
 
-  display.displayCurrentWeather(location, currentWeather, update);
-}
+  if (scale != true) {
+    display.displayCurrentWeather(location, currentWeather, update)
+  }
+  else {
+    display.displayCurrentWeather_C(location, currentWeather, update);
+  }
+};
