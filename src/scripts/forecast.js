@@ -9,6 +9,4 @@ export function forecastInfo(weather) {
     else {
         display.displayWeek_C(week)
     }
-
-
 }
