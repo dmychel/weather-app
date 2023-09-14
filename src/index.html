@@ -9,10 +9,19 @@
 
 <body>
   <main>
-    <form id="locationForm">
-      <label for="location">City or State</label>
-      <input type="text" name="location" id="locationInput" />
-      <input type="checkbox" name="scale" id="scale">
+    <form id="locationForm" class="form">
+      <div>
+        <label for="location">City or State</label>
+        <input type="text" name="location" id="locationInput" />
+      </div>
+
+      <div>
+        <label class="switch">
+          <input type="checkbox" id="scale">
+          <span class="slider round"></span>
+        </label>
+        <label for="checkbox"> F/C</label>
+      </div>
     </form>
 
   </main>
