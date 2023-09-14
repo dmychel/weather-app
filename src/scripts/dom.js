@@ -1,3 +1,6 @@
+import { background } from "./dynamicBackground";
+import { cardBackground } from "./dynamicBackground";
+
 export const display = (() => {
     // Dom Elements
     const main = document.querySelector("main");
@@ -9,6 +12,7 @@ export const display = (() => {
     main.appendChild(forecastContainer);
 
     const displayCurrentWeather = (location, weather, update) => {
+        background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
 
@@ -48,7 +52,6 @@ export const display = (() => {
         forecastContainer.innerHTML = '';
         for (let i = 0; i < week.length; i++) {
             // create html elements
-            console.log(week[i])
             const card = document.createElement('div');
             const maxTemp = document.createElement('p');
             const minTemp = document.createElement('p');
@@ -117,6 +120,7 @@ export const display = (() => {
     };
 
     const displayCurrentWeather_C = (location, weather, update) => {
+        background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
 
