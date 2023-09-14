@@ -7,11 +7,9 @@ export function currentWeatherInfo(weather) {
   let location = {
     city: weather.location.name,
     state: weather.location.region,
-    country: weather.location.country,
   };
   let currentWeather = weather.current;
   let update = weather.current.last_updated;
 
   display.displayCurrentWeather(location, currentWeather, update);
-  // console.log(update)
 }
