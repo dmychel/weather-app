@@ -8,30 +8,39 @@ export const display = (() => {
     main.appendChild(currentWeatherContainer);
     main.appendChild(forecastContainer);
 
-    const displayCurrentWeather = (location, currentWeather, update) => {
+    const displayCurrentWeather = (location, weather, update) => {
         // reset html
         currentWeatherContainer.innerHTML = '';
 
         // create html elements
-        const temperatureEl = document.createElement("div");
+        const condition = document.createElement('img');
+        const feelsLikeEl = document.createElement("div");
+        const tempEl = document.createElement('p');
         const locationEl = document.createElement("div");
         const updateEl = document.createElement('div');
 
         // set content
-        temperatureEl.textContent = `${currentWeather.feelslike_f}`;
-        locationEl.textContent = `${location.city}, ${location.state}, ${location.country}`;
-        updateEl.textContent = `${update}`
+        condition.src = `${weather.condition.icon}`;
+        feelsLikeEl.textContent = `Feels like ${weather.feelslike_f}`;
+        tempEl.textContent = `${weather.temp_f}`;
+        locationEl.textContent = `${location.city}, ${location.state}`;
+        updateEl.textContent = `${update}`;
 
 
         // append
-        currentWeatherContainer.appendChild(temperatureEl);
+        currentWeatherContainer.appendChild(condition);
+        currentWeatherContainer.appendChild(feelsLikeEl);
+        currentWeatherContainer.appendChild(tempEl);
         currentWeatherContainer.appendChild(locationEl);
         currentWeatherContainer.appendChild(updateEl);
 
         // assign class
         currentWeatherContainer.classList = 'current-weather-container';
-        temperatureEl.classList = 'temperature';
-        updateEl.classList = 'update'
+        condition.classList = 'current-condition-img'
+        feelsLikeEl.classList = 'temperature';
+        tempEl.classList = 'current-temp';
+        locationEl.classList = 'current-location';
+        updateEl.classList = 'update';
     };
 
     const displayWeek = week => {
