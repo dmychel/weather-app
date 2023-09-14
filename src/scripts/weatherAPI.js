@@ -13,34 +13,48 @@ export async function search(value) {
     `https://api.weatherapi.com/v1/search.json?key=${AUTHENTICATION}&q=${value}`,
     { mode: "cors" }
   );
-
   response.json().then(function (response) {
-    let location = response[0].name;
-    getForecast(location);
-    getCurrentWeather(location);
+    console.log(response)
+    if (response.length < 1) {
+      console.log(response)
+      alert('please type a city, state, or country')
+    }
+    else {
+      let location = response[0].name;
+      getForecast(location);
+      getCurrentWeather(location);
+    }
+
   });
+
 }
 
 async function getForecast(value) {
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=${value}&days=3`,
-    { mode: "cors" }
-  );
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=${value}&days=3`,
+      { mode: "cors" }
+    );
 
-  response.json().then(function (response) {
-    console.log(response);
-    forecastInfo(response);
-  });
+    response.json().then(function (response) {
+      forecastInfo(response);
+    });
+  } catch (error) {
+    alert('error please try again')
+  }
 }
 
 async function getCurrentWeather(value) {
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${value}`,
-    { mode: "cors" }
-  );
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${value}`,
+      { mode: "cors" }
+    );
 
-  response.json().then(function (response) {
-    console.log(response);
-    currentWeatherInfo(response);
-  });
+    response.json().then(function (response) {
+      currentWeatherInfo(response);
+    });
+  } catch (error) {
+    alert('error please try again')
+  }
 }
