@@ -48,20 +48,25 @@ export const display = (() => {
         forecastContainer.innerHTML = '';
         for (let i = 0; i < week.length; i++) {
             // create html elements
+            console.log(week[i])
             const card = document.createElement('div');
-            const maxTemp = document.createElement('p')
-            const minTemp = document.createElement('p')
-            const condition = document.createElement('img')
+            const maxTemp = document.createElement('p');
+            const minTemp = document.createElement('p');
+            const condition = document.createElement('img');
+            const date = document.createElement('p');
 
             // set content
             condition.src = `${week[i].day.condition.icon}`;
             maxTemp.textContent = `${week[i].day.maxtemp_f}`;
             minTemp.textContent = `${week[i].day.mintemp_f}`;
+            date.textContent = `${week[i].date}`
+
 
             // append elements
             card.appendChild(condition);
             card.appendChild(maxTemp);
             card.appendChild(minTemp);
+            card.appendChild(date)
             forecastContainer.appendChild(card);
 
             // assign class
