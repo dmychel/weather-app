@@ -13,9 +13,13 @@ export const display = (() => {
 
 
         main.appendChild(currentWeatherContainer);
-        currentWeatherContainer.appendChild(temperatureEl)
+        currentWeatherContainer.appendChild(temperatureEl);
         currentWeatherContainer.appendChild(locationEl);
-        currentWeatherContainer.appendChild(updateEl)
+        currentWeatherContainer.appendChild(updateEl);
+
+        currentWeatherContainer.classList = 'current-weather-container';
+        temperatureEl.classList = 'temperature';
+        updateEl.classList = 'update'
     };
 
     const displayWeek = () => { };
