@@ -4,7 +4,9 @@ function locationInput(){
     const form = document.getElementById('locationForm')
     form.addEventListener('submit', (e) =>{
         e.preventDefault()
-        console.log('submit')
+
+        let userInput = document.getElementById('locationInput').value;
+        search(userInput);
     })
 }
 
