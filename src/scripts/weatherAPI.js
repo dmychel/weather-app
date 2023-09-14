@@ -10,17 +10,17 @@ import { currentWeatherInfo } from "./currentWeather";
 
 
 export async function search(value) {
-    const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=${AUTHENTICATION}&q=${value}`)
+    const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=${AUTHENTICATION}&q=${value}` , { mode: 'cors' })
 
     response.json().then(function (response) {
-        getForecast(value)
-        getCurrentWeather(value)
-        console.log(response)
+        let location = response[0].name
+        getForecast(location)
+        getCurrentWeather(location)
     })
 }
 
-async function getForecast() {
-    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=boston&days=3`, { mode: 'cors' });
+async function getForecast(value) {
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=${value}&days=3`, { mode: 'cors' });
 
     response.json().then(function (response) {
         console.log(response)
@@ -28,8 +28,8 @@ async function getForecast() {
     })
 }
 
-async function getCurrentWeather() {
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=boston`)
+async function getCurrentWeather(value) {
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${value}`, { mode: 'cors' })
 
     response.json().then(function (response) {
         console.log(response)
