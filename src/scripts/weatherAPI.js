@@ -14,7 +14,6 @@ export async function search(value) {
     { mode: "cors" }
   );
   response.json().then(function (response) {
-    console.log(response)
     if (response.length < 1) {
       console.log(response)
       alert('please type a city, state, or country')
@@ -24,7 +23,6 @@ export async function search(value) {
       getForecast(location);
       getCurrentWeather(location);
     }
-
   });
 
 }
