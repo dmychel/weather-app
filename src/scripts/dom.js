@@ -1,5 +1,7 @@
 import { background } from "./dynamicBackground";
 import { cardBackground } from "./dynamicBackground";
+import { formatDate } from "./dateFormatter";
+import { formatCurrentDate } from "./dateFormatter";
 
 export const display = (() => {
     // Dom Elements
@@ -28,7 +30,7 @@ export const display = (() => {
         feelsLikeEl.textContent = `Feels like ${weather.feelslike_f}`;
         tempEl.textContent = `${weather.temp_f}`;
         locationEl.textContent = `${location.city}, ${location.state}`;
-        updateEl.textContent = `${update}`;
+        updateEl.textContent = `Last update ${formatCurrentDate(update)}`;
 
 
         // append
@@ -62,7 +64,7 @@ export const display = (() => {
             condition.src = `${week[i].day.condition.icon}`;
             maxTemp.textContent = `${week[i].day.maxtemp_f}`;
             minTemp.textContent = `${week[i].day.mintemp_f}`;
-            date.textContent = `${week[i].date}`;
+            date.textContent = `${formatDate(week[i].date)}`;
 
 
             // append elements
@@ -98,7 +100,7 @@ export const display = (() => {
             condition.src = `${week[i].day.condition.icon}`;
             maxTemp.textContent = `${week[i].day.maxtemp_c}`;
             minTemp.textContent = `${week[i].day.mintemp_c}`;
-            date.textContent = `${week[i].date}`;
+            date.textContent = `${formatDate(week[i].date)}`;
 
 
             // append elements
@@ -135,7 +137,7 @@ export const display = (() => {
         feelsLikeEl.textContent = `Feels like ${weather.feelslike_c}`;
         tempEl.textContent = `${weather.temp_c}`;
         locationEl.textContent = `${location.city}, ${location.state}`;
-        updateEl.textContent = `${update}`;
+        updateEl.textContent = `Last update ${formatCurrentDate(update)}`;
 
 
         // append
