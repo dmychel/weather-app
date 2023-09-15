@@ -6,21 +6,34 @@
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   height: 100vh;
+  width: 100vw;
   text-align: center;
   box-shadow: inset 3px 4px 10px #251903af;
   background-color: black;
- 
+  overflow: hidden;
+  user-select: none;
 }
 
 
 /* user form */
 .form {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  width: 100%;
   align-items: center;
   padding: 20px;
   border-radius: 2px solid;
+}
+
+input[type=text] {
+  width: 200px;
+}
+
+form {
+  width: 100%;
 }
 
 form > div {
@@ -29,6 +42,12 @@ form > div {
 }
 
  /* The switch - the box around the slider */
+
+ .scale-container {
+  position: absolute;
+  right: 50px
+ }
+
  .switch {
   position: relative;
   display: flex;
@@ -133,11 +152,11 @@ input:checked + .slider:before {
 .forecast-container {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
   padding: 20px;
 }
 
 .card {
-  border: 2px solid black;
   border-radius: 5px;
   height: 100%;
   width: 200px;
@@ -173,3 +192,37 @@ input:checked + .slider:before {
 }
 
 /* MEDIA QUERIES */
+@media only screen and (max-width: 480px){
+  .scale-container {
+    position: absolute;
+    top: 100px;
+    right: 25px;
+  }
+
+  .scale-label {
+    position: absolute;
+    top: 0;
+    right: 70px;
+  };
+
+  input[type=text] {
+    height: 30px;
+  }
+
+  .current-weather-container {
+    padding: 20px;
+  }
+
+  .forecast-container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    overflow: hidden;
+  }
+
+  .card {
+    height: fit-content;
+    width: 150px;
+    overflow: scroll;
+  }
+}
