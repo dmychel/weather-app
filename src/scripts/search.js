@@ -1,6 +1,6 @@
 import { search } from "./weatherAPI";
 
-function locationInput() {
+export function locationInput() {
     const form = document.getElementById('locationForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
