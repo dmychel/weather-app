@@ -30,7 +30,7 @@ export const display = (() => {
         feelsLikeEl.textContent = `Feels like ${weather.feelslike_f}`;
         tempEl.textContent = `${weather.temp_f}`;
         locationEl.textContent = `${location.city}, ${location.state}`;
-        updateEl.textContent = `Last update ${formatCurrentDate(update)}`;
+        updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
 
         // append
@@ -137,7 +137,7 @@ export const display = (() => {
         feelsLikeEl.textContent = `Feels like ${weather.feelslike_c}`;
         tempEl.textContent = `${weather.temp_c}`;
         locationEl.textContent = `${location.city}, ${location.state}`;
-        updateEl.textContent = `Last update ${formatCurrentDate(update)}`;
+        updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
 
         // append
