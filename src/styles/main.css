@@ -40,19 +40,19 @@ form {
   width: 100%;
 }
 
-form > div {
+form>div {
   display: flex;
   gap: 1em;
 }
 
- /* The switch - the box around the slider */
+/* The switch - the box around the slider */
 
- .scale-container {
+.scale-container {
   position: absolute;
   right: 50px
- }
+}
 
- .switch {
+.switch {
   position: relative;
   display: flex;
   width: 56px;
@@ -91,15 +91,15 @@ form > div {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: rgb(85, 60, 60);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px rgb(3, 133, 126);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -112,10 +112,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-} 
+}
 
 /* current weather */
-.current-weather-container{
+.current-weather-container {
   /* placement */
   display: flex;
   flex-direction: column;
@@ -132,14 +132,14 @@ input:checked + .slider:before {
 
   /* other */
   background: rgba(255, 255, 255, 0.425);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 7px );
-  -webkit-backdrop-filter: blur( 7px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.current-condition{
+.current-condition {
   padding: 5px;
   font-size: 1rem;
   color: rgb(59, 59, 59);
@@ -177,11 +177,11 @@ input:checked + .slider:before {
 
   /* other */
   background: rgba(255, 255, 255, 0.295);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 7px );
-  -webkit-backdrop-filter: blur( 7px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 1.5rem;
   gap: .5em;
 }
@@ -195,8 +195,65 @@ input:checked + .slider:before {
   font-size: 3rem;
 }
 
+/* dynamic backgrounds */
+.sunny {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.473), rgb(254, 166, 32), rgb(85, 51, 1));
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+.cloudy {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.473), rgb(0, 185, 223), rgb(1, 82, 99));
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+.rain {
+  background: linear-gradient(to bottom right, rgb(111, 158, 194), rgb(10, 52, 85), rgb(0, 16, 27));
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+.snow {
+  background: linear-gradient(to bottom right, rgb(250, 250, 250), rgb(102, 177, 216), rgb(48, 79, 95));
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+.mist {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.473), rgb(50, 58, 59), rgb(14, 46, 53));
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+.heavy {
+  background: linear-gradient(to bottom right, rgb(114, 112, 112), rgb(119, 110, 156), #541c55);
+  background-size: 400% 400%;
+   animation: gradient 15s ease infinite;
+   height: 100vh;
+}
+
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 /* MEDIA QUERIES */
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 480px) {
   .scale-container {
     position: absolute;
     top: 100px;
@@ -207,7 +264,9 @@ input:checked + .slider:before {
     position: absolute;
     top: 0;
     right: 70px;
-  };
+  }
+
+  ;
 
   input[type=text] {
     height: 30px;
