@@ -19,33 +19,32 @@ export const display = (() => {
         currentWeatherContainer.innerHTML = '';
 
         // create html elements
-        const condition = document.createElement('img');
+        const condition = document.createElement('p');
         const feelsLikeEl = document.createElement("div");
         const tempEl = document.createElement('p');
         const locationEl = document.createElement("div");
         const updateEl = document.createElement('div');
 
         // set content
-        condition.src = `${weather.condition.icon}`;
-        feelsLikeEl.textContent = `Feels like ${weather.feelslike_f}`;
-        tempEl.textContent = `${weather.temp_f}`;
+        tempEl.textContent = `${weather.temp_f}` + '°';
+        condition.textContent = `${weather.condition.text}`;
         locationEl.textContent = `${location.city}, ${location.state}`;
         updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
 
         // append
-        currentWeatherContainer.appendChild(condition);
-        currentWeatherContainer.appendChild(feelsLikeEl);
-        currentWeatherContainer.appendChild(tempEl);
         currentWeatherContainer.appendChild(locationEl);
+        currentWeatherContainer.appendChild(tempEl);
+        currentWeatherContainer.appendChild(condition);
         currentWeatherContainer.appendChild(updateEl);
 
         // assign class
         currentWeatherContainer.classList = 'current-weather-container';
-        condition.classList = 'current-condition-img'
+        condition.classList = 'current-condition'
         feelsLikeEl.classList = 'temperature';
         tempEl.classList = 'current-temp';
         locationEl.classList = 'current-location';
+
         updateEl.classList = 'update';
     };
 
@@ -62,9 +61,9 @@ export const display = (() => {
 
             // set content
             condition.src = `${week[i].day.condition.icon}`;
-            maxTemp.textContent = `${week[i].day.maxtemp_f}`;
-            minTemp.textContent = `${week[i].day.mintemp_f}`;
-            date.textContent = `${formatDate(week[i].date)}`;
+            maxTemp.textContent = `${week[i].day.maxtemp_f}` + '°';
+            minTemp.textContent = `${week[i].day.mintemp_f}` + '°';
+            date.textContent = `${formatDate(week[i].date)}` + '°';
 
 
             // append elements
@@ -98,8 +97,8 @@ export const display = (() => {
 
             // set content
             condition.src = `${week[i].day.condition.icon}`;
-            maxTemp.textContent = `${week[i].day.maxtemp_c}`;
-            minTemp.textContent = `${week[i].day.mintemp_c}`;
+            maxTemp.textContent = `${week[i].day.maxtemp_c}` + '°';
+            minTemp.textContent = `${week[i].day.mintemp_c}` + '°';
             date.textContent = `${formatDate(week[i].date)}`;
 
 
@@ -134,8 +133,7 @@ export const display = (() => {
 
         // set content
         condition.src = `${weather.condition.icon}`;
-        feelsLikeEl.textContent = `Feels like ${weather.feelslike_c}`;
-        tempEl.textContent = `${weather.temp_c}`;
+        tempEl.textContent = `${weather.temp_c}` + '°';
         locationEl.textContent = `${location.city}, ${location.state}`;
         updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
