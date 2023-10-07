@@ -119,7 +119,7 @@ input:checked + .slider:before {
   /* placement */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   margin: auto;
@@ -139,9 +139,14 @@ input:checked + .slider:before {
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.current-condition-img {
-  max-width: 100%;
-  height: auto;
+.current-condition{
+  padding: 5px;
+  font-size: 1rem;
+  color: rgb(59, 59, 59);
+}
+
+.current-location {
+  font-size: 0.85rem;
 }
 
 
@@ -181,19 +186,13 @@ input:checked + .slider:before {
   gap: .5em;
 }
 
-.condition-img {
-  max-width: 50%;
-  height: auto;
-}
-
-
 .min-temp {
   font-size: 1rem;
   color: rgb(59, 59, 59);
 }
 
 .current-temp {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 /* MEDIA QUERIES */
