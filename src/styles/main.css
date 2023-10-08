@@ -16,6 +16,7 @@ main {
   overflow: hidden;
   user-select: none;
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.473), rgb(0, 185, 223), rgb(0, 185, 223));
+  color: rgb(236, 215, 215);
 }
 
 
@@ -147,6 +148,14 @@ input:checked+.slider:before {
 
 .current-location {
   font-size: 0.85rem;
+}
+
+.current-forecast-container{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding: 10px;
+  font-size: 1rem;
 }
 
 
