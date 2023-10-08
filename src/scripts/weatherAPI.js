@@ -1,13 +1,10 @@
 import { AUTHENTICATION } from "./authentication";
 import { forecastInfo } from "./forecast";
 import { currentWeatherInfo } from "./currentWeather";
+import { currentDate } from "./dateFormatter";
 
-// fetch weatherAPI
-// display weatherAPI data
-// display weatherAPI 3 day forecast
-// display in F & C
-// search current weather for desired location
 
+// search location
 export async function search(value) {
   const response = await fetch(
     `https://api.weatherapi.com/v1/search.json?key=${AUTHENTICATION}&q=${value}`,
@@ -15,44 +12,46 @@ export async function search(value) {
   );
   response.json().then(function (response) {
     if (response.length < 1) {
-      console.log(response)
       alert('please type a city, state, or country')
     }
     else {
       let location = response[0].name;
-      getForecast(location);
-      getCurrentWeather(location);
+      let day = currentDate()
+      getWeather(location,day)
     }
   });
 
 }
 
-async function getForecast(value) {
+async function getWeather(location,day) {
   try {
-    const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=${value}&days=3`,
+
+    const weather = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${location}`,
       { mode: "cors" }
     );
 
-    response.json().then(function (response) {
-      forecastInfo(response);
-    });
-  } catch (error) {
-    alert('error please try again')
-  }
-}
-
-async function getCurrentWeather(value) {
-  try {
-    const response = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${value}`,
+    const forecast = await fetch(
+      `https://api.weatherapi.com/v1/history.json?key=${AUTHENTICATION}&q=${location}&dt=${day}`,
       { mode: "cors" }
     );
 
-    response.json().then(function (response) {
-      currentWeatherInfo(response);
-    });
+    const futureForecast = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${AUTHENTICATION}&q=${location}&days=3`,
+      { mode: "cors" }
+    );
+
+    const weatherData = await weather.json().then(weather => {currentWeatherInfo(weather)});
+    const forecastData = await forecast.json()
+    const futureForecastData = await futureForecast.json().then(futureForecast => {forecastInfo(futureForecast)});
+
+    console.log(weatherData,forecastData,futureForecastData)
+
   } catch (error) {
-    alert('error please try again')
+    alert('Please try again')
   }
 }
+
+
+
+
