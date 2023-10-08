@@ -41,13 +41,14 @@ async function getWeather(location,day) {
       { mode: "cors" }
     );
 
-    const weatherData = await weather.json().then(weather => {currentWeatherInfo(weather)});
-    const forecastData = await forecast.json()
+    const weatherData = await weather.json();
+    const forecastData = await forecast.json();
     const futureForecastData = await futureForecast.json().then(futureForecast => {forecastInfo(futureForecast)});
 
-    console.log(weatherData,forecastData,futureForecastData)
+    const currentWeather = Promise.all([weatherData, forecastData]).then(currentWeatherInfo(weatherData,forecastData));
 
   } catch (error) {
+    console.log(error)
     alert('Please try again')
   }
 }
