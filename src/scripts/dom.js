@@ -13,22 +13,28 @@ export const display = (() => {
     main.appendChild(currentWeatherContainer);
     main.appendChild(forecastContainer);
 
-    const displayCurrentWeather = (location, weather, update) => {
+    const displayCurrentWeather = (location, weather, forecastTemp, update) => {
         background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
+        console.log(forecastTemp)
 
         // create html elements
-        const condition = document.createElement('p');
+        const locationEl = document.createElement("div");
         const feelsLikeEl = document.createElement("div");
         const tempEl = document.createElement('p');
-        const locationEl = document.createElement("div");
+        const condition = document.createElement('p');
+        const forecastContainer = document.createElement('div');
+        const highTemp = document.createElement('p');
+        const lowTemp = document.createElement('p');
         const updateEl = document.createElement('div');
 
         // set content
+        locationEl.textContent = `${location.city}, ${location.state}`;
         tempEl.textContent = `${weather.temp_f}` + '°';
         condition.textContent = `${weather.condition.text}`;
-        locationEl.textContent = `${location.city}, ${location.state}`;
+        highTemp.textContent = `H:${forecastTemp.maxtemp_f}`;
+        lowTemp.textContent = `L:${forecastTemp.mintemp_f}`
         updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
 
@@ -36,15 +42,20 @@ export const display = (() => {
         currentWeatherContainer.appendChild(locationEl);
         currentWeatherContainer.appendChild(tempEl);
         currentWeatherContainer.appendChild(condition);
+        currentWeatherContainer.appendChild(forecastContainer);
         currentWeatherContainer.appendChild(updateEl);
+
+        forecastContainer.append(highTemp);
+        forecastContainer.append(lowTemp);
+
 
         // assign class
         currentWeatherContainer.classList = 'current-weather-container';
         condition.classList = 'current-condition'
         feelsLikeEl.classList = 'temperature';
         tempEl.classList = 'current-temp';
+        forecastContainer.classList = 'current-forecast-container'
         locationEl.classList = 'current-location';
-
         updateEl.classList = 'update';
     };
 
@@ -76,11 +87,10 @@ export const display = (() => {
             // assign class
             card.classList = 'card';
             condition.classList = 'condition-img';
+            forecastContainer.classList = 'forecast-container';
             maxTemp.classList = 'max-temp';
             minTemp.classList = 'min-temp';
         }
-
-        forecastContainer.classList = 'forecast-container';
     };
 
     // celsius
@@ -119,37 +129,48 @@ export const display = (() => {
         forecastContainer.classList = 'forecast-container';
     };
 
-    const displayCurrentWeather_C = (location, weather, update) => {
+    const displayCurrentWeather_C = (location, weather, forecastTemp, update) => {
         background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
+        console.log(forecastTemp)
 
         // create html elements
-        const condition = document.createElement('img');
+        const locationEl = document.createElement("div");
         const feelsLikeEl = document.createElement("div");
         const tempEl = document.createElement('p');
-        const locationEl = document.createElement("div");
+        const condition = document.createElement('p');
+        const forecastContainer = document.createElement('div');
+        const highTemp = document.createElement('p');
+        const lowTemp = document.createElement('p');
         const updateEl = document.createElement('div');
 
         // set content
-        condition.src = `${weather.condition.icon}`;
-        tempEl.textContent = `${weather.temp_c}` + '°';
         locationEl.textContent = `${location.city}, ${location.state}`;
+        tempEl.textContent = `${weather.temp_c}` + '°';
+        condition.textContent = `${weather.condition.text}`;
+        highTemp.textContent = `H:${forecastTemp.maxtemp_c}`;
+        lowTemp.textContent = `L:${forecastTemp.mintemp_c}`
         updateEl.textContent = `Updated ${formatCurrentDate(update)}`;
 
 
         // append
-        currentWeatherContainer.appendChild(condition);
-        currentWeatherContainer.appendChild(feelsLikeEl);
-        currentWeatherContainer.appendChild(tempEl);
         currentWeatherContainer.appendChild(locationEl);
+        currentWeatherContainer.appendChild(tempEl);
+        currentWeatherContainer.appendChild(condition);
+        currentWeatherContainer.appendChild(forecastContainer);
         currentWeatherContainer.appendChild(updateEl);
+
+        forecastContainer.append(highTemp);
+        forecastContainer.append(lowTemp);
+
 
         // assign class
         currentWeatherContainer.classList = 'current-weather-container';
-        condition.classList = 'current-condition-img'
+        condition.classList = 'current-condition'
         feelsLikeEl.classList = 'temperature';
         tempEl.classList = 'current-temp';
+        forecastContainer.classList = 'current-forecast-container'
         locationEl.classList = 'current-location';
         updateEl.classList = 'update';
     };
