@@ -5,12 +5,13 @@
 
 :root {
   font-family: 'Roboto Condensed', sans-serif;
-  --font-color: rgb(12, 12, 12);
+  --font-color: rgb(214, 214, 214);
 }
 
 body {
   overflow: hidden;
   display: block;
+  color: var(--font-color);
 }
 
 main {
