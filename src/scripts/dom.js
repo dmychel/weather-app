@@ -17,7 +17,6 @@ export const display = (() => {
         background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
-        console.log(forecastTemp)
 
         // create html elements
         const locationEl = document.createElement("div");
@@ -133,7 +132,6 @@ export const display = (() => {
         background(weather.condition.text)
         // reset html
         currentWeatherContainer.innerHTML = '';
-        console.log(forecastTemp)
 
         // create html elements
         const locationEl = document.createElement("div");
@@ -175,5 +173,39 @@ export const display = (() => {
         updateEl.classList = 'update';
     };
 
-    return { displayCurrentWeather, displayWeek, displayWeek_C, displayCurrentWeather_C };
+    const displayHourlyForecast = forecast => {
+        forecastContainer.innerHTML = '';
+        console.log(forecast)
+        for (let i = 0; i < week.length; i++) {
+            // create html elements
+            const hourCard = document.createElement('div');
+            const maxTemp = document.createElement('p');
+            const minTemp = document.createElement('p');
+            const condition = document.createElement('img');
+            const date = document.createElement('p');
+
+            // set content
+            condition.src = `${week[i].day.condition.icon}`;
+            maxTemp.textContent = `${week[i].day.maxtemp_f}` + '°';
+            minTemp.textContent = `${week[i].day.mintemp_f}` + '°';
+            date.textContent = `${formatDate(week[i].date)}` + '°';
+
+
+            // append elements
+            card.appendChild(condition);
+            card.appendChild(maxTemp);
+            card.appendChild(minTemp);
+            card.appendChild(date)
+            forecastContainer.appendChild(card);
+
+            // assign class
+            card.classList = 'card';
+            condition.classList = 'condition-img';
+            forecastContainer.classList = 'forecast-container';
+            maxTemp.classList = 'max-temp';
+            minTemp.classList = 'min-temp';
+        }
+    }
+
+    return { displayCurrentWeather, displayWeek, displayWeek_C, displayCurrentWeather_C, displayHourlyForecast };
 })();
