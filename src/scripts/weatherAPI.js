@@ -25,7 +25,7 @@ export async function search(value) {
 
 async function getWeather(location,day) {
   try {
-
+    // aquire api data
     const weather = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${AUTHENTICATION}&q=${location}`,
       { mode: "cors" }
@@ -41,11 +41,12 @@ async function getWeather(location,day) {
       { mode: "cors" }
     );
 
+    // set variables = to api data
     const weatherData = await weather.json();
     const forecastData = await forecast.json();
     const futureForecastData = await futureForecast.json().then(futureForecast => {forecastInfo(futureForecast)});
 
-    const currentWeather = Promise.all([weatherData, forecastData]).then(currentWeatherInfo(weatherData,forecastData));
+    const currentWeather = Promise.all([weatherData, forecastData]).then(currentWeatherInfo(weatherData, forecastData));
 
   } catch (error) {
     console.log(error)
